@@ -13,23 +13,23 @@ QUERY = 'date=2015-01-01%202017-10-07&geo=GB&q='
 def findAndClickByCssSelector(driver, classes):
     selector = '.'.join(classes)    
     try:
-        btn = driver.find_element_by_css_selector(selector)
+        btn = driver.find_element_by_css_selector(classes)
     except NoSuchElementException:
         return
     btn.click()
     return
-filepath = os.path.join('/home/pippo/go/src/github.com/andream16/yaggts', 'multiTimeline.csv')
+filepath = os.path.join('/home/alessio/go/src/github.com/AndreaM16/yaggts/', 'multiTimeline.csv')
 if os.path.exists(filepath):
     os.remove(filepath)
 profile = webdriver.FirefoxProfile()
 profile.set_preference('browser.download.folderList', 2)
-profile.set_preference('browser.download.manager.showWhenStarting', False)
-profile.set_preference('browser.download.dir', '/home/pippo/go/src/github.com/andream16/yaggts')
+profile.set_preference('browser.download.manager.showWhenStarting', True)
+profile.set_preference('browser.download.dir', '/home/alessio/go/src/github.com/AndreaM16/yaggts/')
 profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 driver = webdriver.Firefox(profile)
 driver.get(TRENDS_URL + QUERY + sys.argv[1])
 sleep(5)
-findAndClickByCssSelector(driver, 'widget-actions-item export')
+findAndClickByCssSelector(driver, ".widget-actions-item-flatten .widget-actions-item.export")
 driver.close()
 
 quit()
