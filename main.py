@@ -18,13 +18,13 @@ def findAndClickByCssSelector(driver, classes):
         return
     btn.click()
     return
-filepath = os.path.join('/home/alessio/go/src/github.com/AndreaM16/yaggts/', 'multiTimeline.csv')
+filepath = os.path.join('/home/andream16/go/src/github.com/andream16/yaggts', 'multiTimeline.csv')
 if os.path.exists(filepath):
     os.remove(filepath)
 profile = webdriver.FirefoxProfile()
 profile.set_preference('browser.download.folderList', 2)
 profile.set_preference('browser.download.manager.showWhenStarting', True)
-profile.set_preference('browser.download.dir', '/home/alessio/go/src/github.com/AndreaM16/yaggts/')
+profile.set_preference('browser.download.dir', '/home/andream16/go/src/github.com/andream16/yaggts')
 profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 driver = webdriver.Firefox(profile)
 driver.get(TRENDS_URL + QUERY + sys.argv[1])
